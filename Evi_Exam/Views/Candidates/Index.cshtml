@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Evi_Exam.Models.Candidate>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary btn-sm">Create New</a>
+</p>
+@foreach (var item in Model)
+{
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between">
+            <div>
+                <img class="rounded-circle" src="@item.Image" width="35" /> &nbsp;&nbsp;&nbsp;
+                <b>Name: </b>  @Html.DisplayFor(modelItem => item.CandidateName) &nbsp;&nbsp;&nbsp;
+                <b>Date Of Birth: </b>       @Html.DisplayFor(modelItem => item.DateOfBirth) &nbsp;&nbsp;&nbsp;
+                <b>Phone:  </b>         @Html.DisplayFor(modelItem => item.Phone) &nbsp;&nbsp;&nbsp;
+                <b>Fresher: </b>      @Html.DisplayFor(modelItem => item.Fresher) &nbsp;&nbsp;&nbsp;
+            </div>
+            <div>
+                <a asp-action="Edit" class="btn btn-primary btn-sm" asp-route-id="@item.CandidateId">Edit</a> |
+                <a asp-action="Delete"  class="btn btn-danger btn-sm" asp-route-id="@item.CandidateId">Delete</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover table-striped table-responsive-sm ">
+                <thead class=" text-white font-weight-bold" style="background-color:lightblue">
+                    <tr>
+                        <th>Skills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in item.CandidateSkills)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(x=>i.Skills.SkillsName)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+}
+
+

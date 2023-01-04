@@ -1,0 +1,11 @@
+﻿@model Evi_Exam.Models.Skills
+<br />
+<div class="row">
+    <div class="col-10">
+        @Html.DropDownListFor(x=>x.SkillsId,ViewBag.skill as SelectList,"---Select---",new{@class="form-control"})
+    </div>
+    <div class="d-flex justify-content-end">
+        <a id="DeleteSkills" class="btn btn-danger btn-sm text-white">Remove</a>
+    </div>
+</div>
+

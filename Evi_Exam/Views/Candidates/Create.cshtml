@@ -1,0 +1,68 @@
+﻿@model Evi_Exam.ViewModels.CandidateVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h1>Create</h1>
+
+<h4>Candidate</h4>
+<hr />
+<form asp-action="Create" enctype="multipart/form-data" method="post">
+    <div class="row d-flex justify-content-between">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CandidateName" class="control-label"></label>
+                <input asp-for="CandidateName" class="form-control" />
+                <span asp-validation-for="CandidateName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" type="date"/>
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" type="file"/>
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Fresher" /> @Html.DisplayNameFor(model => model.Fresher)
+                </label>
+            </div>
+            
+        </div>
+        <div class="col-6">
+            <div class="d-flex justify-content-end">
+                <a id="BtnPlus" class="btn btn-primary btn-sm text-white">Add More</a>
+            </div>
+            <div id="SkillContainer">
+                <script>
+                    LoadData();
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
